@@ -177,6 +177,7 @@
 
     function recordSound() {
         $('.admin-edit').on('click', function () {
+            alert("click");
             var controlClass = "recording";
             if ($(this).hasClass(controlClass)) {
                 $(this).removeClass(controlClass);
