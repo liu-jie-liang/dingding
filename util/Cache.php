@@ -32,8 +32,8 @@ class Cache
     {
         if (class_exists("Memcache"))
         {
-            $memcache = new Memcache;
-            if ($memcache->connect('127.0.0.1', 11211))
+            $memcache = new Memcached();
+            if ($memcache->addServer('127.0.0.1', 11211))
             {
                 return $memcache;
             }
