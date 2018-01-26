@@ -64,11 +64,10 @@ class Prpcrypt
 			mcrypt_generic_deinit($module);
 			mcrypt_module_close($module);
 
-			//print(base64_encode($encrypted));
 			//使用BASE64对加密后的字符串进行编码
 			return array(ErrorCode::$OK, base64_encode($encrypted));
 		} catch (Exception $e) {
-			print $e;
+            Log::e($e->getMessage());
 			return array(ErrorCode::$EncryptAESError, null);
 		}
 	}
@@ -86,6 +85,7 @@ class Prpcrypt
 			mcrypt_generic_deinit($module);
 			mcrypt_module_close($module);
 		} catch (Exception $e) {
+            Log::e($e->getMessage());
 			return array(ErrorCode::$DecryptAESError, null);
 		}
 
@@ -103,7 +103,7 @@ class Prpcrypt
 			$xml_content = substr($content, 4, $xml_len);
 			$from_corpid = substr($content, $xml_len + 4);
 		} catch (Exception $e) {
-			print $e;
+            Log::e($e->getMessage());
 			return array(ErrorCode::$DecryptAESError, null);
 		}
 		if ($from_corpid != $corpid)

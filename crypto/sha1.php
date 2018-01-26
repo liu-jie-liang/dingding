@@ -12,7 +12,7 @@ class SHA1
 			$str = implode($array);
 			return array(ErrorCode::$OK, sha1($str));
 		} catch (Exception $e) {
-			print $e . "\n";
+            Log::e($e->getMessage());
 			return array(ErrorCode::$ComputeSignatureError, null);
 		}
 	}

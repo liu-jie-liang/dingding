@@ -19,8 +19,7 @@ try {
     $crypt = new DingtalkCrypt(TOKEN, ENCODING_AES_KEY, CORPID);
     $errCode = $crypt->DecryptMsg($signature, $timeStamp, $nonce, $encrypt, $msg);
 } catch (Exception $e) {
-    Log::e("DecryptMsg Exception".$e->getMessage());
-    print $e->getMessage();
+    Log::e($e->getMessage());
     exit();
 }
 
