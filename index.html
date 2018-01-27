@@ -58,9 +58,7 @@
                 }
 
                 var OPENAPIHOST = 'http://' + location.host;
-                showInfo(OPENAPIHOST);
                 var isDingtalk = /DingTalk/.test(navigator.userAgent);
-                showInfo(isDingtalk);
                 var proper = {};
                 var _userId = '';
                 var _userInfo = {};
@@ -145,14 +143,12 @@
                 function getUserId(corpId) {
                     authCode(corpId).then(function (result) {
                         var code = result.code;
-                        showInfo(code);
                         var getUserIdRequest = {
                             url: OPENAPIHOST + '/getOapiByName.php?event=getuserid',
                             type: 'POST',
                             data: {code: code},
                             dataType: 'json',
                             success: function (response) {
-                                showInfo(response.errcode);
                                 if (response.errcode === 0) {
                                     proper.userId = response.userid;
                                     showInfo(proper.userId);
@@ -193,7 +189,6 @@
                         data: {userid: userid},
                         dataType: 'json',
                         success: function (response) {
-                            showInfo(response.errcode);
                             if (response.errcode === 0) {
                                 proper.userInfo = response;
                             } else {
@@ -261,9 +256,7 @@
 
                 $(function () {
                     var originalUrl = location.href;
-                    showInfo(originalUrl);
                     var corpId = parseCorpId(originalUrl, 'corpId');
-                    showInfo(corpId);
                     var jsApiList = [
                         'runtime.info',
                         'biz.contact.choose',
@@ -287,13 +280,11 @@
                         showInfo(err);
                     });
                     var getOapiByNameUrl = OPENAPIHOST + '/getOapiByName.php?event=jsapi-oauth&href=' + encodeURIComponent(location.href);
-                    showInfo(getOapiByNameUrl);
                     var signRequest = {
                         url: getOapiByNameUrl,
                         type: 'GET',
                         dataType: 'json',
                         success: function (response) {
-                            showInfo(response.errcode);
                             if (response.errcode === 0) {
                                 const config = {
                                     agentId: response.agentId || '',
@@ -309,7 +300,6 @@
                                     openLink(url);
                                 });
                                 var corpId = response.corpId;
-                                showInfo(corpId);
                                 getUserId(corpId);
                                 dd.ready(function () {
                                     onRecordEnd();
