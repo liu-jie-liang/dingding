@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
-        <title></title>
+        <title>钉钉语音demo</title>
         <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js" charset="utf-8"></script>
         <script src="https://g.alicdn.com/dingding/open-develop/1.0.0/dingtalk.js" charset="utf-8"></script>
         <style>
@@ -151,7 +151,6 @@
                             success: function (response) {
                                 if (response.errcode === 0) {
                                     proper.userId = response.userid;
-                                    showInfo(proper.userId);
                                 } else {
                                     showInfo(response);
                                 }
