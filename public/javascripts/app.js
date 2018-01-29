@@ -13,7 +13,8 @@
         });
     }
 
-    var OPENAPIHOST = 'http://' + location.host;
+    // var OPENAPIHOST = 'http://' + location.host;
+    var OPENAPIHOST = 'http://' + location.host + '/dingding';
     var isDingtalk = /DingTalk/.test(navigator.userAgent);
     var proper = {};
     var _userId = '';
